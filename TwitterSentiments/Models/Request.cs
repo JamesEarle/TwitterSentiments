@@ -16,6 +16,7 @@ namespace TwitterSentiments.Models
         [Display(Name = "Twitter Handle")]
         public string TwitterHandle { get; set; }
         public string Count { get; set; }
+        public double Result { get; set; }
 
         // Auto timestamp
         [Display(Name = "Date Created")]
