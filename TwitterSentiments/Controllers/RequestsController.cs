@@ -48,6 +48,8 @@ namespace TwitterSentiments.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID,TwitterHandle,Count,Result")] Request request)
         {
+            // 1e3e99ee674b4a0c930aaca327eea231
+            // sub key for text-analytics
             if (ModelState.IsValid)
             {
                 request.Result = 0.0;
