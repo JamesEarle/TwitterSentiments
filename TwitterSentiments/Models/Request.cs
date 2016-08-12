@@ -15,7 +15,9 @@ namespace TwitterSentiments.Models
         // Form inputs
         [Display(Name = "Twitter Handle")]
         public string TwitterHandle { get; set; }
-        public string Count { get; set; }
+
+        
+        public int Count { get; set; }
         public double Result { get; set; }
 
         // Auto timestamp

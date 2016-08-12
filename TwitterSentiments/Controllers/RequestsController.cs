@@ -1,4 +1,5 @@
 ﻿using System;
+using CoreTweet;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -7,6 +8,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using TwitterSentiments.Models;
+using TwitterSentiments.App_Start;
 
 namespace TwitterSentiments.Controllers
 {
@@ -52,6 +54,12 @@ namespace TwitterSentiments.Controllers
             // sub key for text-analytics
             if (ModelState.IsValid)
             {
+                CoreTweetWrapper wrapper = new CoreTweetWrapper();
+
+                var testStatus = wrapper.GetUserMostRecentStatus(request.TwitterHandle);
+
+                var tweetList = wrapper.GetUserTimeline(request.TwitterHandle, request.Count);
+
                 request.Result = 0.0;
                 db.Requests.Add(request);
                 db.SaveChanges();
