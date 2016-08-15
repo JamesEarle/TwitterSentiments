@@ -66,7 +66,7 @@ namespace TwitterSentiments.Controllers
                     // Perform the request and save the raw JSON response
                     var response = manager.MakeRequest(tweet.Text);
 
-                    // Some special characters cause the request to return 400
+                    // In case of Error 400 
                     if(response != null)
                     {
                         // Deserialize the JSON to be managed by our JObject

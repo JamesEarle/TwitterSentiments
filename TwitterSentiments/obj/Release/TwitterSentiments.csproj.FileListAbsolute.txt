@@ -82,3 +82,14 @@ C:\Users\jaearle\Documents\Code\TwitterSentiments\TwitterSentiments\obj\Release\
 C:\Users\jaearle\Documents\Code\TwitterSentiments\TwitterSentiments\obj\Release\TwitterSentiments.pdb
 C:\Users\jaearle\Documents\Code\TwitterSentiments\TwitterSentiments\bin\CoreTweet.dll
 C:\Users\jaearle\Documents\Code\TwitterSentiments\TwitterSentiments\bin\CoreTweet.xml
+C:\Users\jaearle\Documents\Code\TwitterSentiments\TwitterSentiments\bin\System.Net.Http.Extensions.dll
+C:\Users\jaearle\Documents\Code\TwitterSentiments\TwitterSentiments\bin\System.Net.Http.Formatting.dll
+C:\Users\jaearle\Documents\Code\TwitterSentiments\TwitterSentiments\bin\System.Net.Http.Primitives.dll
+C:\Users\jaearle\Documents\Code\TwitterSentiments\TwitterSentiments\bin\System.Web.Http.dll
+C:\Users\jaearle\Documents\Code\TwitterSentiments\TwitterSentiments\bin\System.Web.Http.WebHost.dll
+C:\Users\jaearle\Documents\Code\TwitterSentiments\TwitterSentiments\bin\System.Net.Http.Extensions.xml
+C:\Users\jaearle\Documents\Code\TwitterSentiments\TwitterSentiments\bin\System.Net.Http.Formatting.xml
+C:\Users\jaearle\Documents\Code\TwitterSentiments\TwitterSentiments\bin\System.Net.Http.Primitives.xml
+C:\Users\jaearle\Documents\Code\TwitterSentiments\TwitterSentiments\bin\System.Web.Http.xml
+C:\Users\jaearle\Documents\Code\TwitterSentiments\TwitterSentiments\bin\System.Web.Http.WebHost.xml
+C:\Users\jaearle\Documents\Code\TwitterSentiments\TwitterSentiments\obj\Release\TwitterSentiments.csproj.App.config
