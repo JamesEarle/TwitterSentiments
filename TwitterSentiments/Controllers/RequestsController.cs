@@ -4,6 +4,10 @@ using System.Net;
 using System.Web.Mvc;
 using TwitterSentiments.Models;
 using TwitterSentiments.App_Start;
+using System.Diagnostics;
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
+using System;
 
 namespace TwitterSentiments.Controllers
 {
@@ -50,15 +54,39 @@ namespace TwitterSentiments.Controllers
             if (ModelState.IsValid)
             {
                 CoreTweetWrapper wrapper = new CoreTweetWrapper();
+                RequestManager manager = new RequestManager();
 
-                //var testStatus = wrapper.GetUserMostRecentStatus(request.TwitterHandle);
+                var score = 0.0;
 
-                //var tweetList = wrapper.GetUserTimeline(request.TwitterHandle, request.Count);
+                // Retrieve the given user's most recent tweets, specified by count.
+                var tweetList = wrapper.GetUserTimeline(request.TwitterHandle, request.Count);
+                
+                foreach(var tweet in tweetList)
+                { 
+                    // Perform the request and save the raw JSON response
+                    var response = manager.MakeRequest(tweet.Text);
 
-                //request.Result = 0.0;
+                    // Some special characters cause the request to return 400
+                    if(response != null)
+                    {
+                        // Deserialize the JSON to be managed by our JObject
+                        var json = (JObject)JsonConvert.DeserializeObject(response);
 
-                //TODO make cognitive services API request
+                        // Grab the root of the JSON document
+                        var documents = json.SelectToken("documents");
 
+                        // The "score" token contains the sentiment analysis
+                        var value = documents[0].SelectToken("score");
+
+                        // Sum into score to be averaged later.
+                        score += Convert.ToDouble(value.ToString());
+                    }
+                }
+
+                // Save the average score
+                request.Result = (score / tweetList.Count);
+
+                // Log results and request into database
                 db.Requests.Add(request);
                 db.SaveChanges();
                 return RedirectToAction("Index");
