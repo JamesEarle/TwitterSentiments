@@ -60,27 +60,21 @@ namespace TwitterSentiments.Controllers
 
                 // Retrieve the given user's most recent tweets, specified by count.
                 var tweetList = wrapper.GetUserTimeline(request.TwitterHandle, request.Count);
-                
-                foreach(var tweet in tweetList)
-                { 
-                    // Perform the request and save the raw JSON response
-                    var response = manager.MakeRequest(tweet.Text);
+                var responses = manager.MakeRequest(tweetList.ToList());
 
-                    // In case of Error 400 
-                    if(response != null)
+                if(responses != null)
+                {
+                    // Deserialize the JSON to be managed by our JObject
+                    var json = (JObject)JsonConvert.DeserializeObject(responses);
+                    var documents = json.SelectToken("documents");
+
+                    // Access each document and sum the score token
+                    for (int i = 0; i < documents.Count(); i++)
                     {
-                        // Deserialize the JSON to be managed by our JObject
-                        var json = (JObject)JsonConvert.DeserializeObject(response);
-
-                        // Grab the root of the JSON document
-                        var documents = json.SelectToken("documents");
-
-                        // The "score" token contains the sentiment analysis
-                        var value = documents[0].SelectToken("score");
-
-                        // Sum into score to be averaged later.
-                        score += Convert.ToDouble(value.ToString());
+                        var val = documents[i].SelectToken("score");
+                        score += Convert.ToDouble(val.ToString());
                     }
+
                 }
 
                 // Save the average score

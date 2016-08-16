@@ -57,16 +57,24 @@
         span.style.height = "20px";
         span.style.width = "150px";
 
-        // Convert value to color here
-        if(value > 0 && value < 0.3) {
-            // Red
-            span.style.backgroundColor = "red";
-        } else if(value >= 0.3 && value < 0.7) {
-            // Orange
-            span.style.backgroundColor = "orange";
-        } else if (value >= 0.7 && value < 1.0) {
-            // Green
-            span.style.backgroundColor = "green";
+        // Convert value to Red -> Yellow -> Green gradient
+        // Intervals of 12.5%
+        if(value > 0 && value < 0.125) {
+            span.style.backgroundColor = "#FF2828";
+        } else if (value >= 0.125 && value < 0.25) {
+            span.style.backgroundColor = "#FF6030";
+        } else if (value >= 0.25 && value < 0.375) {
+            span.style.backgroundColor = "#FF9E28";
+        } else if (value >= 0.375 && value < 0.5) {
+            span.style.backgroundColor = "#FFBE28";
+        } else if (value >= 0.5 && value < 0.625) {
+            span.style.backgroundColor = "#FFDB28";
+        } else if (value >= 0.625 && value < 0.75) {
+            span.style.backgroundColor = "#FFFF28";
+        } else if (value >= 0.75 && value < 0.875) {
+            span.style.backgroundColor = "#BBFF28";
+        } else if (value >= 0.875 && value < 1.0) {
+            span.style.backgroundColor = "#42FF42";
         }
 
         scales[i].appendChild(span);

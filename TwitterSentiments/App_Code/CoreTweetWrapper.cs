@@ -9,14 +9,16 @@ namespace TwitterSentiments.App_Start
 {
     public class CoreTweetWrapper
     {
-        
+        // API information
         private string consumerKey = "KKkdkUnUX2HikXO0NbxwNK4A1";
         private string accessToken = "2789039840-7EWx1MKjSBNCvUPTxsb2hlTYwm6ZqpLcOYsU1IF";
+
+        // Connection tokens object
         public Tokens tokens; 
 
-        // Use OAuth to open an authenticated session.
         public CoreTweetWrapper()
         {
+            // Use OAuth to open an authenticated session and make requests
             tokens = Tokens.Create(consumerKey, "8GSJ0HNkPaLJ89jqwYMFgRj015gdSBhscQ46xY6grs8FD9PQXm", accessToken, "WrcRG29RNb4U0bvCpW85E2L0jlmRSKWyIbjzPldxfMHEC", screenName: "JamesMSP");
         }
 
