@@ -92,3 +92,4 @@ C:\Users\jaearle\Documents\Code\TwitterSentiments\TwitterSentiments\bin\Microsof
 C:\Users\jaearle\Documents\Code\TwitterSentiments\TwitterSentiments\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\Users\jaearle\Documents\Code\TwitterSentiments\TwitterSentiments\obj\Debug\TwitterSentiments.dll
 C:\Users\jaearle\Documents\Code\TwitterSentiments\TwitterSentiments\obj\Debug\TwitterSentiments.pdb
+C:\Users\jaearle\Documents\Code\TwitterSentiments\TwitterSentiments\obj\Debug\TwitterSentiments.csprojResolveAssemblyReference.cache

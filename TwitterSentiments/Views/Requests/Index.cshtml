@@ -7,6 +7,12 @@
 <h2>Index</h2>
 
 <p>
+    Below is the history of requests made to the Twitter Sentiments application recently. The score 
+    represents a positive/negative sentiment analysis averaged over the number of tweets analyzed. It 
+    is a 0-1 scale, with 1 being the most positive. 
+</p>
+
+<p>
     @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
@@ -36,7 +42,6 @@
         </td>
         <td id="scale"></td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
             @Html.ActionLink("Details", "Details", new { id=item.ID }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.ID })
         </td>
