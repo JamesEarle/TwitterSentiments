@@ -4,8 +4,7 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
-
+<h2>Request History</h2>
 <p>
     Below is the history of requests made to the Twitter Sentiments application recently. The score 
     represents a positive/negative sentiment analysis averaged over the number of tweets analyzed. It 
@@ -58,32 +57,31 @@
     for (let i = 0; i < data.length; i++) {
         var value = data[i].attributes[2].nodeValue;
 
-        var span = document.createElement("p");
-        //span.appendChild(document.createTextNode(""));
+        var p = document.createElement("p");
 
-        span.style.height = "20px";
-        span.style.width = "150px";
+        //p.style.height = "20px";
+        //p.style.width = "150px";
 
         // Convert value to Red -> Yellow -> Green gradient
         // Intervals of 12.5%
         if(value > 0 && value < 0.125) {
-            span.style.backgroundColor = "#FF2828";
+            p.style.backgroundColor = "#FF2828";
         } else if (value >= 0.125 && value < 0.25) {
-            span.style.backgroundColor = "#FF6030";
+            p.style.backgroundColor = "#FF6030";
         } else if (value >= 0.25 && value < 0.375) {
-            span.style.backgroundColor = "#FF9E28";
+            p.style.backgroundColor = "#FF9E28";
         } else if (value >= 0.375 && value < 0.5) {
-            span.style.backgroundColor = "#FFBE28";
-        } else if (value >= 0.5 && value < 0.625) {
-            span.style.backgroundColor = "#FFDB28";
-        } else if (value >= 0.625 && value < 0.75) {
-            span.style.backgroundColor = "#FFFF28";
-        } else if (value >= 0.75 && value < 0.875) {
-            span.style.backgroundColor = "#BBFF28";
-        } else if (value >= 0.875 && value < 1.0) {
-            span.style.backgroundColor = "#42FF42";
+            p.style.backgroundColor = "#FFBE28";
+        } else if (value >= 0.5 && value < 0.6) {
+            p.style.backgroundColor = "#FFDB28";
+        } else if (value >= 0.6 && value < 0.70) {
+            p.style.backgroundColor = "#FFFF28";
+        } else if (value >= 0.70 && value < 0.8) {
+            p.style.backgroundColor = "#BBFF28";
+        } else if (value >= 0.8 && value < 1.0) {
+            p.style.backgroundColor = "#42FF42";
         }
 
-        scales[i].appendChild(span);
+        scales[i].appendChild(p);
     }
 </script>
