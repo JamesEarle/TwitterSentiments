@@ -27,6 +27,11 @@ textarea {
     margin-top: 50px;
 }
 
+#scale > p {
+    height: 20px;
+    width: 105px;
+}
+
 .img-box {
     height: 225px;
     width: 225px;
