@@ -2,30 +2,42 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+<div class="jumbotron top-margin">
+    <img class="img-box pull-right" src="~/Images/theatre.png" />
+    <h1>Twitter Sentiments</h1>
+    <p class="lead">Have you ever wondered how a person is really feeling?</p>
+    <p><a href="/Requests/Create" alt="Create a Request" class="btn btn-lg btn-primary">Learn more &raquo;</a></p>
+
 </div>
 
 <div class="row">
     <div class="col-md-4">
-        <h2>Getting started</h2>
+        <h2>About</h2>
         <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
+            This web application allows you to analyze any Twitter user's 
+            positive or negative sentiments in their recent tweets. Developed with 
+            ASP.NET MVC Framework and hosted on Azure with SQL Server. Select below to 
+            see a history of the most recent requests made by others.
         </p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+        <p><a href="/Requests/Index" class="btn btn-lg btn-default">Request History</a></p>
     </div>
     <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+        <h2>Cognitive Services</h2>
+        <p>
+            Microsoft provides a list of APIs that allow you to easily integrate a variety of machine learning 
+            tools into your web applications for free!
+        </p>
+        <p><a class="btn btn-default" href="https://www.microsoft.com/cognitive-services">Learn more &raquo;</a></p>
+
     </div>
     <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+        <h2>How This Works</h2>
+        <p>
+            In the "Make Request" tab you are able to provide a Twitter username, as well as a number. This number 
+            tells the application how many of that user's tweets you want to be analyzed. Once those tweets are collected, 
+            they are formatted into JSON and passed to the <a href="https://www.microsoft.com/cognitive-services/en-us/text-analytics-api">Microsoft Cognitive Services API for text analytics</a>,
+            specifically for sentiment analysis. This API also provides tools for language detection and key phrase analysis.
+        </p>
+        <p><a class="btn btn-default" href="https://www.microsoft.com/cognitive-services/en-us/text-analytics-api">Learn more &raquo;</a></p>
     </div>
 </div>

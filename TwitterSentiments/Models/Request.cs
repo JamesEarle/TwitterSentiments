@@ -18,6 +18,8 @@ namespace TwitterSentiments.Models
 
         
         public int Count { get; set; }
+
+        [Display(Name = "Score")]
         public double Result { get; set; }
 
         // Auto timestamp

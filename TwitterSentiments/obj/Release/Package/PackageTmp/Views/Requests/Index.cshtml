@@ -7,6 +7,12 @@
 <h2>Index</h2>
 
 <p>
+    Below is the history of requests made to the Twitter Sentiments application recently. The score 
+    represents a positive/negative sentiment analysis averaged over the number of tweets analyzed. It 
+    is a 0-1 scale, with 1 being the most positive. 
+</p>
+
+<p>
     @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
@@ -20,7 +26,7 @@
         <th>
             @Html.DisplayNameFor(model => model.Result)
         </th>
-        <th></th>
+        <th>Scale</th>
     </tr>
 
 @foreach (var item in Model) {
@@ -31,15 +37,51 @@
         <td>
             @Html.DisplayFor(modelItem => item.Count)
         </td>
-        <td>
+        <td class="data" id="data" value="@item.Result">
             @Html.DisplayFor(modelItem => item.Result)
         </td>
+        <td id="scale"></td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
             @Html.ActionLink("Details", "Details", new { id=item.ID }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.ID })
         </td>
     </tr>
 }
-
 </table>
+
+<script type="text/javascript">
+    var data = document.querySelectorAll("#data");
+    var scales = document.querySelectorAll("#scale");
+
+    for (let i = 0; i < data.length; i++) {
+        var value = data[i].attributes[2].nodeValue;
+
+        var span = document.createElement("p");
+        //span.appendChild(document.createTextNode(""));
+
+        span.style.height = "20px";
+        span.style.width = "150px";
+
+        // Convert value to Red -> Yellow -> Green gradient
+        // Intervals of 12.5%
+        if(value > 0 && value < 0.125) {
+            span.style.backgroundColor = "#FF2828";
+        } else if (value >= 0.125 && value < 0.25) {
+            span.style.backgroundColor = "#FF6030";
+        } else if (value >= 0.25 && value < 0.375) {
+            span.style.backgroundColor = "#FF9E28";
+        } else if (value >= 0.375 && value < 0.5) {
+            span.style.backgroundColor = "#FFBE28";
+        } else if (value >= 0.5 && value < 0.625) {
+            span.style.backgroundColor = "#FFDB28";
+        } else if (value >= 0.625 && value < 0.75) {
+            span.style.backgroundColor = "#FFFF28";
+        } else if (value >= 0.75 && value < 0.875) {
+            span.style.backgroundColor = "#BBFF28";
+        } else if (value >= 0.875 && value < 1.0) {
+            span.style.backgroundColor = "#42FF42";
+        }
+
+        scales[i].appendChild(span);
+    }
+</script>
