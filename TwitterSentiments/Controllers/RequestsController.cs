@@ -6,6 +6,7 @@ using TwitterSentiments.App_Start;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
 using System;
+using TwitterSentiments.Twitter;
 
 namespace TwitterSentiments.Controllers
 {
@@ -49,42 +50,39 @@ namespace TwitterSentiments.Controllers
         {
             // 1e3e99ee674b4a0c930aaca327eea231
             // sub key for text-analytics
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid) return View(request);
+
+            var wrapper = new CoreTweetWrapper();
+            var manager = new RequestManager();
+
+            var score = 0.0;
+
+            // Retrieve the given user's most recent tweets, specified by count.
+            var tweetList = wrapper.GetUserTimeline(request.TwitterHandle, request.Count);
+            var responses = manager.MakeRequest(tweetList.ToList());
+
+            if(responses != null)
             {
-                CoreTweetWrapper wrapper = new CoreTweetWrapper();
-                RequestManager manager = new RequestManager();
+                // Deserialize the JSON to be managed by our JObject
+                var json = (JObject)JsonConvert.DeserializeObject(responses);
+                var documents = json.SelectToken("documents");
 
-                var score = 0.0;
-
-                // Retrieve the given user's most recent tweets, specified by count.
-                var tweetList = wrapper.GetUserTimeline(request.TwitterHandle, request.Count);
-                var responses = manager.MakeRequest(tweetList.ToList());
-
-                if(responses != null)
+                // Access each document and sum the score token
+                for (var i = 0; i < documents.Count(); i++)
                 {
-                    // Deserialize the JSON to be managed by our JObject
-                    var json = (JObject)JsonConvert.DeserializeObject(responses);
-                    var documents = json.SelectToken("documents");
-
-                    // Access each document and sum the score token
-                    for (int i = 0; i < documents.Count(); i++)
-                    {
-                        var val = documents[i].SelectToken("score");
-                        score += Convert.ToDouble(val.ToString());
-                    }
-
+                    var val = documents[i].SelectToken("score");
+                    score += Convert.ToDouble(val.ToString());
                 }
 
-                // Save the average score
-                request.Result = (score / tweetList.Count);
-
-                // Log results and request into database
-                db.Requests.Add(request);
-                db.SaveChanges();
-                return RedirectToAction("Index");
             }
 
-            return View(request);
+            // Save the average score
+            request.Result = (score / tweetList.Count);
+
+            // Log results and request into database
+            db.Requests.Add(request);
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
 
         // GET: Requests/Delete/5
