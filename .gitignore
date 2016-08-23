@@ -245,4 +245,4 @@ ModelManifest.xml
 .fake/
 
 # Ignore release files
-Web.release.config
+Web.Release.config
